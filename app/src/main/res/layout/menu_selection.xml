@@ -12,9 +12,9 @@
         android:id="@+id/imageButtonClassic"
         android:layout_width="186dp"
         android:layout_height="104dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/button_start" />
@@ -69,9 +69,10 @@
         android:id="@+id/imageButtonCustom"
         android:layout_width="186dp"
         android:layout_height="104dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textSeekBarField"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/WallsEnabledChip"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/button_start" />
 
@@ -95,4 +96,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonClassic"
         app:srcCompat="@drawable/strape_black" />
+
+    <CheckBox
+        android:id="@+id/WallsEnabledChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textSeekBarField"
+        app:layout_constraintStart_toStartOf="parent"
+        android:button="@layout/checkbox_selector"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

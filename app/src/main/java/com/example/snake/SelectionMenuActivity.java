@@ -31,6 +31,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
     ImageView imageButtonClassic;
     ImageView imageButtonCustom;
     static int CUSTOM_SPEED;
+    static boolean WALLS_ENABLED;
     static int CUSTOM_FIELD;
     static boolean CUSTOM_GAME;
 
@@ -51,8 +52,10 @@ public class SelectionMenuActivity extends AppCompatActivity {
         setContentView(R.layout.menu_selection);
 
         {
+
             CUSTOM_SPEED = 500;
             CUSTOM_FIELD = 10;
+            WALLS_ENABLED = false;
             CUSTOM_GAME = false;
 
             seekBarSpeed = (SeekBar) findViewById(R.id.seekBarSpeed);
