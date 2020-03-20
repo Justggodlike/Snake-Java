@@ -27,6 +27,7 @@ package com.example.snake;
 public class SnakeActivity extends AppCompatActivity {
 
     // declaration
+    int MIN_SWIPE_DISTANCE;
     String CURRENT;
     int SPEED;
     int FIELD;
@@ -61,6 +62,7 @@ public class SnakeActivity extends AppCompatActivity {
             actionBar.hide();
         }//remove upper bar
 
+        MIN_SWIPE_DISTANCE = 10;
         if(!CUSTOM_GAME){
             FIELD = 10;
             SPEED = 500;
@@ -670,7 +672,6 @@ public class SnakeActivity extends AppCompatActivity {
     } //ss
 
     private void performActions(int startX, int startY, int endX, int endY, int dX, int dY) {
-        final int MIN_SWIPE_DISTANCE = 25;
         if(dX >= dY && dX >= MIN_SWIPE_DISTANCE && startX >= endX){onLeftSwipe();}
         if(dX >= dY && dX >= MIN_SWIPE_DISTANCE && startX <= endX){onRightSwipe();}
         if(dX < dY && dY >= MIN_SWIPE_DISTANCE && startY >= endY){onUpSwipe();}
