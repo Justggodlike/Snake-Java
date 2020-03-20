@@ -9,15 +9,26 @@
     tools:context=".SelectionMenuActivity">
 
     <ImageView
-        android:id="@+id/imageButtonClassic"
+        android:id="@+id/imageButtonCustom"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonCustomText"
+        app:srcCompat="@drawable/tile_empty" />
+
+    <ImageView
+        android:id="@+id/imageButtonClassicText"
         android:layout_width="186dp"
         android:layout_height="104dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/button_start" />
+        app:srcCompat="@drawable/button_classic" />
 
     <SeekBar
         android:id="@+id/seekBarField"
@@ -66,15 +77,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageButtonCustom"
+        android:id="@+id/imageButtonCustomText"
         android:layout_width="186dp"
         android:layout_height="104dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/WallsEnabledChip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/button_start" />
+        app:srcCompat="@drawable/button_custom" />
 
     <TextView
         android:id="@+id/textSeekBarSpeed"
@@ -91,20 +102,45 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonCustom"
+        android:layout_marginTop="63dp"
+        android:layout_marginBottom="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonCustomText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonClassic"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonClassicText"
         app:srcCompat="@drawable/strape_black" />
 
     <CheckBox
         android:id="@+id/WallsEnabledChip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="125dp"
-        android:layout_marginLeft="125dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginBottom="30dp"
+        android:button="@layout/checkbox_selector"
         app:layout_constraintBottom_toTopOf="@+id/textSeekBarField"
-        app:layout_constraintStart_toStartOf="parent"
-        android:button="@layout/checkbox_selector"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="30dp"
+        android:text="Walls enabled"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textSeekBarField"
+        app:layout_constraintStart_toEndOf="@+id/WallsEnabledChip" />
+
+    <ImageView
+        android:id="@+id/imageButtonClassic"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonClassicText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tile_empty" />
 </androidx.constraintlayout.widget.ConstraintLayout>

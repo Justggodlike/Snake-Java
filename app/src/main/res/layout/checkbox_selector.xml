@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android"  android:layout_height="0dp" android:layout_width="0dp">
     <item android:drawable="@drawable/custom_thumb"
         android:state_checked="false"/>
-    <item android:drawable="@drawable/custom_thumb"
+    <item android:drawable="@drawable/custom_thumb_checkbox"
         android:state_checked="true"/>
     <item android:drawable="@drawable/custom_thumb"/>
 </selector>

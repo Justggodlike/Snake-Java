@@ -15,12 +15,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.Random;
 import static com.example.snake.MainMenuActivity.screenHeight;
 import static com.example.snake.MainMenuActivity.screenWidth;
+import static com.example.snake.SnakeActivity.CURRENTACTIVE;
 
 public class SelectionMenuActivity extends AppCompatActivity {
 
@@ -30,6 +34,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
     TextView textSeekBarField;
     ImageView imageButtonClassic;
     ImageView imageButtonCustom;
+    CheckBox wallsEnabledChip;
     static int CUSTOM_SPEED;
     static boolean WALLS_ENABLED;
     static int CUSTOM_FIELD;
@@ -53,6 +58,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
 
         {
 
+            CURRENTACTIVE = false;
             CUSTOM_SPEED = 500;
             CUSTOM_FIELD = 10;
             WALLS_ENABLED = false;
@@ -64,13 +70,14 @@ public class SelectionMenuActivity extends AppCompatActivity {
             textSeekBarField = (TextView) findViewById(R.id.textSeekBarField);
             imageButtonClassic = (ImageView) findViewById(R.id.imageButtonClassic);
             imageButtonCustom = (ImageView) findViewById(R.id.imageButtonCustom);
+            wallsEnabledChip = (CheckBox) findViewById(R.id.WallsEnabledChip);
 
-            Bitmap bitmapCustom = BitmapFactory.decodeResource(getResources(), R.drawable.button_custom);
-            Bitmap bitmapClassic = BitmapFactory.decodeResource(getResources(), R.drawable.button_classic);
+            Bitmap bitmapCustom = BitmapFactory.decodeResource(getResources(), R.drawable.tile_apple);
+            Bitmap bitmapClassic = BitmapFactory.decodeResource(getResources(), R.drawable.tile_apple);
 
 
-            imageButtonClassic.setImageBitmap(Bitmap.createScaledBitmap(bitmapClassic, (int) (screenWidth * 0.3875), (int) (screenWidth * 0.1507), false));
-            imageButtonCustom.setImageBitmap(Bitmap.createScaledBitmap(bitmapCustom, (int) (screenWidth * 0.3875), (int) (screenWidth * 0.1507), false));
+            imageButtonClassic.setImageBitmap(Bitmap.createScaledBitmap(bitmapClassic, (int) (/*screenWidth * 0.3875*/104), (int) (/*screenWidth * 0.1507*/104), false));
+            imageButtonCustom.setImageBitmap(Bitmap.createScaledBitmap(bitmapCustom, (int) (/*screenWidth * 0.3875*/104), (int) (/*screenWidth * 0.1507*/104), false));
         }
 
         imageButtonClassic.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +92,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectionMenuActivity.this, SnakeActivity.class));
-                CUSTOM_SPEED = 1000/seekBarSpeed.getProgress();
+                CUSTOM_SPEED = 1000 / seekBarSpeed.getProgress();
                 CUSTOM_FIELD = seekBarField.getProgress();
                 CUSTOM_GAME = true;
             }
@@ -104,7 +111,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // TODO Auto-generated method stub
 
                 textSeekBarSpeed.setText("Speed: " + Integer.toString(seekBarSpeed.getProgress()) + "t/s");
@@ -125,7 +132,7 @@ public class SelectionMenuActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // TODO Auto-generated method stub
 
                 textSeekBarField.setText("Field: " + Integer.toString(seekBarField.getProgress()) + "x" + Integer.toString(seekBarField.getProgress()));
@@ -133,6 +140,13 @@ public class SelectionMenuActivity extends AppCompatActivity {
             }
         });
 
+        wallsEnabledChip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){WALLS_ENABLED = true;}
+                else {WALLS_ENABLED = false;}
+            }
+        });
     }
 
     @Override

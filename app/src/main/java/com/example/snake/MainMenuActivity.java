@@ -3,7 +3,7 @@ package com.example.snake;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
+import static com.example.snake.SnakeActivity.CURRENTACTIVE;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,6 +30,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        CURRENTACTIVE = false;
 
         {
             //Remove title bar

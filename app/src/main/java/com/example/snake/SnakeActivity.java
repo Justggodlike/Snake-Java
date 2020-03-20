@@ -23,12 +23,13 @@ package com.example.snake;
         import static com.example.snake.SelectionMenuActivity.CUSTOM_FIELD;
         import static com.example.snake.SelectionMenuActivity.CUSTOM_GAME;
         import static com.example.snake.SelectionMenuActivity.CUSTOM_SPEED;
+        import static com.example.snake.SelectionMenuActivity.WALLS_ENABLED;
 
 public class SnakeActivity extends AppCompatActivity {
 
     // declaration
     int MIN_SWIPE_DISTANCE;
-    String CURRENT;
+    static boolean CURRENTACTIVE;
     int SPEED;
     int FIELD;
     static boolean gameOver;
@@ -62,6 +63,8 @@ public class SnakeActivity extends AppCompatActivity {
             actionBar.hide();
         }//remove upper bar
 
+        CURRENTACTIVE = true;
+        gameOver = false;
         MIN_SWIPE_DISTANCE = 10;
         if(!CUSTOM_GAME){
             FIELD = 10;
@@ -85,7 +88,6 @@ public class SnakeActivity extends AppCompatActivity {
             direction = "right";
             // "right", "left", "down", "up".
             generationMove = "right";
-            gameOver = false;
             snake_size = 3;
 
             bitmapEmpty = BitmapFactory.decodeResource(getResources(), R.drawable.tile_empty);
@@ -150,11 +152,6 @@ public class SnakeActivity extends AppCompatActivity {
             });
         } //movement
 
-         /*finalScoreReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });*/
     }
 
     void countdown() {
@@ -163,7 +160,7 @@ public class SnakeActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {}
 
             public void onFinish() {
-                if(gameOver == false) {Move();}
+                if(gameOver == false) {if(CURRENTACTIVE){Move();}}
                 else {}
             }
         }.start();
@@ -175,58 +172,103 @@ public class SnakeActivity extends AppCompatActivity {
             boolean recalculate = false;
             if (generationMove == "right") {
 
+                if(!WALLS_ENABLED){
+
                 if(snake_state[0][0] != FIELD - 1) {if(apple_state[0][0] == snake_state[0][0] + 1  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}}
                 else {if(apple_state[0][0] == 0  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}}
+
+                } else {
+                    if(apple_state[0][0] == snake_state[0][0] + 1  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}
+                }
 
                 for(int i = snake_size - 1; i > 0; i--){
                     snake_state[i][0] = snake_state[i - 1][0];
                     snake_state[i][1] = snake_state[i - 1][1];
                 }
+                if(!WALLS_ENABLED){
 
                 if(snake_state[0][0] != FIELD - 1) {snake_state[0][0]++;}
                 else{snake_state[0][0] = 0;}
+
+                } else {
+
+                    if(snake_state[0][0] != FIELD - 1) {snake_state[0][0]++;}
+                    else{gameOver = true;}
+
+                }
             }
 
             if (generationMove == "left") {
 
+                if(!WALLS_ENABLED){
+
                 if(snake_state[0][0] != 0) {if(apple_state[0][0] == snake_state[0][0] - 1  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}}
                 else {if(apple_state[0][0] == FIELD - 1  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}}
+
+                } else {
+
+                    if(snake_state[0][0] != 0) {if(apple_state[0][0] == snake_state[0][0] - 1  && apple_state[0][1] == snake_state[0][1]) {snake_size++; recalculate = true;}}
+
+                }
 
                 for(int i = snake_size-1; i > 0; i--){
                     snake_state[i][0] = snake_state[i - 1][0];
                     snake_state[i][1] = snake_state[i - 1][1];
                 }
 
+                if(!WALLS_ENABLED){
                 if(snake_state[0][0] != 0) {snake_state[0][0]--;}
                 else{snake_state[0][0] = FIELD - 1;}
+                } else {
+                    if(snake_state[0][0] != 0) {snake_state[0][0]--;}
+                    else{gameOver = true;}
+                }
             }
 
             if (generationMove == "up") {
 
+                if(!WALLS_ENABLED){
                 if(snake_state[0][1] != 0) {if(apple_state[0][0] == snake_state[0][0] && apple_state[0][1] == snake_state[0][1] - 1) {snake_size++; recalculate = true;}}
                 else {if(apple_state[0][1] == FIELD - 1  && apple_state[0][0] == snake_state[0][0]) {snake_size++; recalculate = true;}}
+                } else {
+                    if(snake_state[0][1] != 0) {if(apple_state[0][0] == snake_state[0][0] && apple_state[0][1] == snake_state[0][1] - 1) {snake_size++; recalculate = true;}}
+                }
 
                 for(int i = snake_size-1; i > 0; i--){
                     snake_state[i][0] = snake_state[i - 1][0];
                     snake_state[i][1] = snake_state[i - 1][1];
                 }
 
+                if(!WALLS_ENABLED){
                 if(snake_state[0][1] != 0) {snake_state[0][1]--;}
                 else{snake_state[0][1] = FIELD - 1;}
+                } else {
+                    if(snake_state[0][1] != 0) {snake_state[0][1]--;}
+                    else{gameOver = true;}
+                }
             }
 
             if (generationMove == "down") {
 
+                if(!WALLS_ENABLED){
                 if(snake_state[0][1] != FIELD - 1) {if(apple_state[0][0] == snake_state[0][0] && apple_state[0][1] == snake_state[0][1] + 1) {snake_size++; recalculate = true;}}
                 else {if(apple_state[0][1] == 0  && apple_state[0][0] == snake_state[0][0]) {snake_size++; recalculate = true;}}
+                } else {
+                    if(snake_state[0][1] != FIELD - 1) {if(apple_state[0][0] == snake_state[0][0] && apple_state[0][1] == snake_state[0][1] + 1) {snake_size++; recalculate = true;}}
+                }
 
                 for(int i = snake_size-1; i > 0; i--){
                     snake_state[i][0] = snake_state[i - 1][0];
                     snake_state[i][1] = snake_state[i - 1][1];
                 }
 
+                if(!WALLS_ENABLED){
                 if(snake_state[0][1] != FIELD - 1) {snake_state[0][1]++;}
                 else{snake_state[0][1] = 0;}
+                } else {
+                    if(snake_state[0][1] != FIELD - 1) {snake_state[0][1]++;}
+                    else{gameOver = true;}
+                }
             }
 
             performStateCalculation();
@@ -247,7 +289,6 @@ public class SnakeActivity extends AppCompatActivity {
         if(gameOver){setContentView(R.layout.activity_main);}
 
         {
-            gameOver = false;
 
             for (int i = 0; i < (int) Math.pow(FIELD, 2); i++) {
                 for (int k = 0; k < 2; k++) {

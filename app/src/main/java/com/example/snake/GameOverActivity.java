@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import static com.example.snake.MainMenuActivity.screenHeight;
 import static com.example.snake.MainMenuActivity.screenWidth;
+import static com.example.snake.SnakeActivity.CURRENTACTIVE;
 
 public class GameOverActivity extends AppCompatActivity {
 
@@ -24,6 +25,8 @@ public class GameOverActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        CURRENTACTIVE = false;
 
         {
             //Remove title bar
