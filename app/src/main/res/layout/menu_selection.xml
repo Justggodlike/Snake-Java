@@ -17,7 +17,7 @@
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/imageButtonCustomText"
-        app:srcCompat="@drawable/tile_empty" />
+        app:srcCompat="@drawable/button_arrow" />
 
     <ImageView
         android:id="@+id/imageButtonClassicText"
@@ -142,5 +142,5 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/imageButtonClassicText"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tile_empty" />
+        app:srcCompat="@drawable/button_arrow" />
 </androidx.constraintlayout.widget.ConstraintLayout>

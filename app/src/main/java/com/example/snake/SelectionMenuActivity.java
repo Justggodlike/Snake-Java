@@ -72,8 +72,8 @@ public class SelectionMenuActivity extends AppCompatActivity {
             imageButtonCustom = (ImageView) findViewById(R.id.imageButtonCustom);
             wallsEnabledChip = (CheckBox) findViewById(R.id.WallsEnabledChip);
 
-            Bitmap bitmapCustom = BitmapFactory.decodeResource(getResources(), R.drawable.tile_apple);
-            Bitmap bitmapClassic = BitmapFactory.decodeResource(getResources(), R.drawable.tile_apple);
+            Bitmap bitmapCustom = BitmapFactory.decodeResource(getResources(), R.drawable.button_arrow);
+            Bitmap bitmapClassic = BitmapFactory.decodeResource(getResources(), R.drawable.button_arrow);
 
 
             imageButtonClassic.setImageBitmap(Bitmap.createScaledBitmap(bitmapClassic, (int) (/*screenWidth * 0.3875*/104), (int) (/*screenWidth * 0.1507*/104), false));
