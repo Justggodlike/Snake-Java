@@ -48,4 +48,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameOverAnnouncement"
         app:srcCompat="@drawable/text_final_score" />
+
+    <ImageView
+        android:id="@+id/image_button_donate"
+        android:layout_width="85dp"
+        android:layout_height="123dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gameOverAnnouncement"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/button_donate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

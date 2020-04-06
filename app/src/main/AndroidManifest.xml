@@ -18,6 +18,7 @@
         <activity android:name=".GameOverActivity"></activity>
         <activity android:name=".SnakeActivity"></activity>
         <activity android:name=".SelectionMenuActivity"></activity>
+        <activity android:name=".DonateActivity"></activity>
     </application>
 
 </manifest>
